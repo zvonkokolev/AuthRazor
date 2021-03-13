@@ -27,8 +27,8 @@ namespace AuthRazor.Basic
                 .AddCookie("CookieAuth", config =>
                 {
                     config.Cookie.Name = "AuthCookie";
-                    config.LoginPath = "/Auth/Login";
-                    config.AccessDeniedPath = "/Auth/AccessDenied";
+                    config.LoginPath = "/Login"; // /path to folder/Login page
+                    config.AccessDeniedPath = "/AccessDenied"; // /path to folder/AccessDenied page
                 });
             services.AddRazorPages();
             services.AddScoped<IUnitOfWork, UnitOfWork>(serviceProvider => new UnitOfWork());
@@ -53,7 +53,7 @@ namespace AuthRazor.Basic
 
             app.UseRouting();
 
-            app.UseAuthentication();
+            app.UseAuthentication();    //added
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
