@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthRazor.Persistence", "Au
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthRazor.Utils", "AuthRazor.Utils\AuthRazor.Utils.csproj", "{FA6F8E69-175C-4EBA-98DF-301986BE545A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthRazor.Web", "AuthRazor.Web\AuthRazor.Web.csproj", "{92EFA93D-7D1E-4B32-BE4C-A0C2CCC08228}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthRazor.Basic", "AuthRazor.Basic\AuthRazor.Basic.csproj", "{28DFBB0C-F4F5-474D-8869-DFD749434635}"
 EndProject
 Global
@@ -31,10 +29,6 @@ Global
 		{FA6F8E69-175C-4EBA-98DF-301986BE545A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA6F8E69-175C-4EBA-98DF-301986BE545A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA6F8E69-175C-4EBA-98DF-301986BE545A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{92EFA93D-7D1E-4B32-BE4C-A0C2CCC08228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92EFA93D-7D1E-4B32-BE4C-A0C2CCC08228}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92EFA93D-7D1E-4B32-BE4C-A0C2CCC08228}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92EFA93D-7D1E-4B32-BE4C-A0C2CCC08228}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28DFBB0C-F4F5-474D-8869-DFD749434635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{28DFBB0C-F4F5-474D-8869-DFD749434635}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28DFBB0C-F4F5-474D-8869-DFD749434635}.Release|Any CPU.ActiveCfg = Release|Any CPU
