@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace AuthRazor.Basic.Pages
 {
     [Authorize]
-    public class AdministartorSettingsModel : PageModel
+    public class AdministratorSettingsModel : PageModel
     {
         public void OnGet()
         {

@@ -1,8 +1,11 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AuthRazor.Core;
 using AuthRazor.Core.Contracts;
 using AuthRazor.Utils;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -53,20 +56,35 @@ namespace AuthRazor.Basic.Pages
                 Message = "Benutzer nicht vorhanden!!!";
                 return Page();
             }
-            string enteredPassword = AuthUtils.GenerateHashedPassword(Password);
-            if (!AuthUtils.VerifyPassword(enteredPassword, user.Password))
+            
+            if (!AuthUtils.VerifyPassword(Password, user.Password))
             {
                 Message = "E-mail / Passwort stimmt nicht!!!";
                 return Page();
             }
+            // prepare cookie 
+            var authClaim = new List<Claim> 
+            {
+                new Claim(ClaimTypes.Email, user.Email)
+            };
+            if (!string.IsNullOrEmpty(user.UserRole))
+            {
+                authClaim.Add(new Claim(ClaimTypes.Role, user.UserRole));
+            }
+            var identity = new ClaimsIdentity(authClaim, "AuthUserIdentity");
+            var userPrincipal = new ClaimsPrincipal(new[] { identity});
+            // create cookie
+            await HttpContext.SignInAsync(userPrincipal);
 
             if (user.UserRole == "Administrator")
             {
                 return RedirectToPage("/AdministratorSettings", new { id = user.Id });
+                //return RedirectToPage(Request.Query["ReturnUrl"]);
             }
             else if (user.UserRole == "User")
             {
                 return RedirectToPage("/Settings", new { userId = user.Id });
+                //return RedirectToPage(Request.Query["ReturnUrl"]);
             }
             else
             {
