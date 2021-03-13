@@ -1,18 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AuthRazor.Basic.Pages
 {
-    [Authorize]
+    [Authorize(Roles = "User")]
     public class SettingsModel : PageModel
     {
-        public void OnGet()
+        public ActionResult OnGet()
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToPage("/Login", "Sie sind abgemeldet");
+            }
+            return Page();
         }
     }
 }
